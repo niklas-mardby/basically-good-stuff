@@ -1,4 +1,8 @@
 
+// First a demo of fetch from an API with country data
+// this demo is to better understand the JSON we get from the API and how we
+// extract info from the returned data
+
 const allCountriesUrl = "https://restcountries.com/v3.1/all";
 
 async function loadAllCountries() {
@@ -24,7 +28,7 @@ async function loadAllCountries() {
 
 loadAllCountries();
 
-// ===========================
+// ======================================================================================
 
 const allDisneyCharactersUrl = "https://api.disneyapi.dev/characters";
 
