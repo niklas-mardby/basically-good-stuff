@@ -53,3 +53,37 @@ buttonElement.addEventListener("click", async (event) => {
         ulElement.innerHTML += `<li>Name: ${element.name} from movie ${element.films[0]}</li>`;
     });
 });
+
+// ======================================================================================
+
+// Show countries matching search for currenct
+const currencySearchUrl = "https://restcountries.com/v3.1/currency/";
+
+const btnCurrency = document.getElementById("btn-currency") as HTMLButtonElement;
+const listCurrency = document.getElementById("list-currency") as HTMLElement;
+const inputCurrency = document.getElementById("currency") as HTMLInputElement;
+
+btnCurrency.addEventListener("click", async (event) => {
+    event.preventDefault();
+
+    if (inputCurrency.value.length > 0) {
+        // sökordet står i inputCurrency.value
+        // vår sammansatta url är då currencySearchUrl + inputCurrency.value
+
+        const response = await fetch(currencySearchUrl + inputCurrency.value);
+        const data = await response.json();
+
+        //console.log(data);
+
+        // här kan vi behöva lite mer robust kod som kollar ifall vi fick ett svar eller inte
+
+        listCurrency.innerHTML = "";
+
+        data.forEach((country: any) => {
+            listCurrency.innerHTML += `<li>Name: ${country.name.common}</li>`;
+        });
+
+        inputCurrency.value = "";
+    }
+
+});
